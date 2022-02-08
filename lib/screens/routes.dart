@@ -4,4 +4,5 @@ class Routes {
   static const paymentMethodRoute = '/paymentMethodRoute';
   static const paymentDetailsRoute = '/paymentDetailsRoute';
   static const paymentConfirmationRoute = '/paymentConfirmationRoute';
+  static const scannerScreen = '/scannerScreen';
 }

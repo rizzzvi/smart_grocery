@@ -37,6 +37,8 @@ dependencies:
   flutter_svg: ^1.0.3
   mask_text_input_formatter: ^2.1.0
   flutter_form_builder: ^7.1.0
+  flutter_barcode_scanner: ^2.0.0
+  qr_code_scanner: ^0.6.1
 
 dev_dependencies:
   flutter_test:

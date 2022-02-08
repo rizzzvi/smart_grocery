@@ -5,6 +5,7 @@ import 'package:smart_grocery/screens/payment_confirmation_screen.dart';
 import 'package:smart_grocery/screens/payment_details_screen.dart';
 import 'package:smart_grocery/screens/payment_method_screen.dart';
 import 'package:smart_grocery/screens/routes.dart';
+import 'package:smart_grocery/screens/scan_code_screen.dart';
 import 'package:smart_grocery/screens/signup_screen.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           headline2: TextStyle(color: Colors.black, fontSize: 36),
         ),
       ),
-      home: PaymentDetailsScreen(),
+      home: MainScreen(),
       routes: {
         Routes.loginRoute: (context) => LoginScreen(),
         Routes.signupRoute: (context) => SignupScreen(),
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         Routes.paymentDetailsRoute: (context) => PaymentDetailsScreen(),
         Routes.paymentConfirmationRoute: (context) =>
             PaymentConfirmationScreen(),
+        Routes.scannerScreen: (context) => ScanCodeScreen(),
       },
     );
   }

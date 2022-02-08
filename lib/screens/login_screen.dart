@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           onPressed: () {
                             Navigator.of(context)
-                                .pushNamed(Routes.paymentMethodRoute);
+                                .pushNamed(Routes.scannerScreen);
                           },
                           child: Text('Login')),
                     ),

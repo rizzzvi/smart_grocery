@@ -169,7 +169,7 @@ class PaymentDetailsScreen extends StatelessWidget {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       padding: EdgeInsets.symmetric(vertical: 24),
                       primary: Theme.of(context).primaryColor,

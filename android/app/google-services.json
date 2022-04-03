@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391065546462",
+    "project_id": "smart-grocery-9c2bd",
+    "storage_bucket": "smart-grocery-9c2bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391065546462:android:501e6317961968e9369c4f",
+        "android_client_info": {
+          "package_name": "com.example.smart_grocery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391065546462-4r9jkotjpv00st9o05s8r0llf02461ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6gUueyBzcyO65qgvo-OSky0Iu9uhxKUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391065546462-4r9jkotjpv00st9o05s8r0llf02461ta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

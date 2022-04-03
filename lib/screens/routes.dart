@@ -5,4 +5,5 @@ class Routes {
   static const paymentDetailsRoute = '/paymentDetailsRoute';
   static const paymentConfirmationRoute = '/paymentConfirmationRoute';
   static const scannerScreen = '/scannerScreen';
+  static const cartScreen = '/cartScreen';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_grocery/screens/routes.dart';
 
 class PaymentConfirmationScreen extends StatelessWidget {
   @override
@@ -39,12 +40,14 @@ class PaymentConfirmationScreen extends StatelessWidget {
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 20),
                     primary: Theme.of(context).primaryColor,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.scannerScreen);
+                  },
                   child: Text('Home')),
             ),
           ],

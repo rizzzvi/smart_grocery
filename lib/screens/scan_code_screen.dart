@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
+import 'package:badges/badges.dart';
 
 class ScanCodeScreen extends StatefulWidget {
   @override
@@ -18,13 +21,27 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
 
   QRViewController? controller;
   bool showScanner = false;
+  int cartItems = 0;
 
   // @override
   @override
   Widget build(BuildContext context) {
+    print('Build Called');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0, top: 8.0),
+            child: Badge(
+              badgeContent: Consumer<DataProvider>(
+                builder: (context, dataProvider, child) =>
+                    Text(dataProvider.numberOfItems.toString()),
+              ),
+              child: Icon(Icons.shopping_cart),
+            ),
+          )
+        ],
       ),
       body: Container(
         height: MediaQuery.of(context).size.height * 0.8,
@@ -33,11 +50,11 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             Container(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: 300,
-              child: showScanner
-                  ? QRView(
+            showScanner
+                ? Container(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: 300,
+                    child: QRView(
                       key: qrKey,
                       onQRViewCreated: _onQRViewCreated,
                       overlay: QrScannerOverlayShape(
@@ -47,9 +64,13 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
                         borderWidth: 10,
                         cutOutSize: 300,
                       ),
-                    )
-                  : Image.asset('assets/images/qr-code.png'),
-            ),
+                    ),
+                  )
+                : Image.asset(
+                    'assets/images/qr-code.png',
+                    height: MediaQuery.of(context).size.height * 0.4,
+                  ),
+
             Container(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
@@ -57,41 +78,78 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    // shape: RoundedRectangleBorder(
-                    //   borderRadius: BorderRadius.circular(12),
-                    // ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     padding: EdgeInsets.symmetric(vertical: 16),
                     primary: Theme.of(context).primaryColor,
                   ),
-                  onPressed: showScanner
-                      ? () {
-                          showScanner = !showScanner;
+                  onPressed:
+                      // Provider.of<DataProvider>(context, listen: false)
+                      //     .updateCartItems();
+                      // showScanner = true;
+                      // setState(() {});
 
-                          setState(() {});
-                          Navigator.of(context)
-                              .pushNamed(Routes.paymentMethodRoute);
-                        }
-                      : () {
-                          showScanner = !showScanner;
-                          setState(() {});
-                        },
-                  child: !showScanner ? Text('SCAN') : Text('Done')),
+                      showScanner
+                          ? () {
+                              showScanner = false;
+
+                              setState(() {});
+                            }
+                          : () {
+                              showScanner = true;
+                              setState(() {});
+                            },
+                  child: Text('SCAN')),
             ),
             SizedBox(height: 50),
-            Text('Scanned Data : ' + result!),
+            // Text('Scanned Data : ' + result!),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  primary: Theme.of(context).primaryColor,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Routes.cartScreen);
+                },
+                child: Text('Go to cart!'),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) {
+  void _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
 
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
+    await controller.scannedDataStream.listen(
+      (scanData) {
+        print('Scan Data' + scanData.toString());
         result = scanData.code;
-      });
-    });
+        if (result!.isNotEmpty) {
+          print('Result  $result');
+
+          Provider.of<DataProvider>(context, listen: false).updateCartItems();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Item added to cart successfully'),
+            ),
+          );
+          showScanner = false;
+          setState(() {});
+        }
+      },
+    );
+    // showScanner = false;
+
+    // result = '';
+    // setState(() {});
   }
 }

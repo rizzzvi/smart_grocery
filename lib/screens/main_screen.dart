@@ -48,6 +48,9 @@ class MainScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 18),
                         primary: Theme.of(context).primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, Routes.signupRoute);
@@ -61,6 +64,9 @@ class MainScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 18),
                         primary: Theme.of(context).primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, Routes.loginRoute);

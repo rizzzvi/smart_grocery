@@ -24,17 +24,22 @@ class PaymentMethodScreen extends StatelessWidget {
                   Theme.of(context).textTheme.headline2?.copyWith(fontSize: 28),
             ),
             SizedBox(height: 50),
-            Container(
-              height: 100,
-              alignment: Alignment.center,
-              width: double.infinity,
-              color: Colors.grey[300],
-              child: Text(
-                'Cash',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    ?.copyWith(color: Colors.black),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, Routes.paymentConfirmationRoute);
+              },
+              child: Container(
+                height: 100,
+                alignment: Alignment.center,
+                width: double.infinity,
+                color: Colors.grey[300],
+                child: Text(
+                  'Cash',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3
+                      ?.copyWith(color: Colors.black),
+                ),
               ),
             ),
             SizedBox(height: 60),

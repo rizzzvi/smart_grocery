@@ -8,6 +8,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
 import 'package:badges/badges.dart';
+import 'package:smart_grocery/services/authentication_helper.dart';
 
 class ScanCodeScreen extends StatefulWidget {
   @override
@@ -30,6 +31,12 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
+        leading: InkWell(
+            onTap: () {
+              AuthenticationHelper().signOut();
+              Navigator.pushNamed(context, Routes.loginRoute);
+            },
+            child: Icon(Icons.logout)),
         actions: [
           InkWell(
             onTap: () {

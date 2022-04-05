@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
           InkWell(
             onTap: () {
               Provider.of<DataProvider>(context, listen: false).clearCart();
-              // Navigator.of(context).pushNamed(Routes.cartScreen);
+              Navigator.of(context).pushNamed(Routes.scannerScreen);
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 20.0, top: 24.0),

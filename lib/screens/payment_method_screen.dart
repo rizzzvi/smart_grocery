@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
@@ -72,7 +74,10 @@ class PaymentMethodScreen extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    '14 SR',
+                    Provider.of<DataProvider>(context, listen: false)
+                            .totalBill
+                            .toString() +
+                        ' Sr',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],

@@ -11,6 +11,7 @@ import 'package:smart_grocery/screens/routes.dart';
 import 'package:smart_grocery/screens/scan_code_screen.dart';
 import 'package:smart_grocery/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:smart_grocery/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
             headline2: TextStyle(color: Colors.black, fontSize: 36),
           ),
         ),
-        home: LoginScreen(),
+        home: SplashScreen(),
         routes: {
           Routes.loginRoute: (context) => LoginScreen(),
           Routes.signupRoute: (context) => SignupScreen(),

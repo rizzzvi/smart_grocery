@@ -2,7 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  get user => _auth.currentUser;
+  get user async => await _auth.currentUser;
+  Future<bool> isUserLoggedIn() async {
+    User? userCheck = await user;
+    if (userCheck == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   //SIGN UP METHOD
   Future signUp({String? email, String? password}) async {
     try {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
 
 class PaymentConfirmationScreen extends StatelessWidget {
@@ -38,17 +40,19 @@ class PaymentConfirmationScreen extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    primary: Theme.of(context).primaryColor,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.scannerScreen);
-                  },
-                  child: Text('Home')),
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  primary: Theme.of(context).primaryColor,
+                ),
+                onPressed: () {
+                  Provider.of<DataProvider>(context, listen: false).clearCart();
+                  Navigator.pushNamed(context, Routes.scannerScreen);
+                },
+                child: Text('Home'),
+              ),
             ),
           ],
         ),

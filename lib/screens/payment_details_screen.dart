@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
 
 class PaymentDetailsScreen extends StatelessWidget {
@@ -45,7 +47,7 @@ class PaymentDetailsScreen extends StatelessWidget {
                           LengthLimitingTextInputFormatter(14),
                         ],
                         decoration: InputDecoration(
-                          labelText: 'Card Number',
+                          labelText: 'Enter your 14 digit card number',
                           enabledBorder: InputBorder.none,
                           border: InputBorder.none,
                           disabledBorder: InputBorder.none,
@@ -153,7 +155,10 @@ class PaymentDetailsScreen extends StatelessWidget {
                     ),
                     Spacer(),
                     Text(
-                      '14 SR',
+                      Provider.of<DataProvider>(context, listen: false)
+                              .totalBill
+                              .toString() +
+                          ' Sr',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -167,20 +172,21 @@ class PaymentDetailsScreen extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 24),
-                      primary: Theme.of(context).primaryColor,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        Navigator.of(context)
-                            .pushNamed(Routes.paymentConfirmationRoute);
-                      }
-                    },
-                    child: Text('Confirm Order')),
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    primary: Theme.of(context).primaryColor,
+                  ),
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.of(context)
+                          .pushNamed(Routes.paymentConfirmationRoute);
+                    }
+                  },
+                  child: Text('Confirm Order'),
+                ),
               ),
               SizedBox(height: 100),
             ],

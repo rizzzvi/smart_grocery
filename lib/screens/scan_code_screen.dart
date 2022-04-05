@@ -31,14 +31,21 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0, top: 8.0),
-            child: Badge(
-              badgeContent: Consumer<DataProvider>(
-                builder: (context, dataProvider, child) =>
-                    Text(dataProvider.numberOfItems.toString()),
+          InkWell(
+            onTap: () {
+              Provider.of<DataProvider>(context, listen: false)
+                  .calculateTotalBill();
+              Navigator.of(context).pushNamed(Routes.cartScreen);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20.0, top: 8.0),
+              child: Badge(
+                badgeContent: Consumer<DataProvider>(
+                  builder: (context, dataProvider, child) =>
+                      Text(dataProvider.numberOfItems.toString()),
+                ),
+                child: Icon(Icons.shopping_cart),
               ),
-              child: Icon(Icons.shopping_cart),
             ),
           )
         ],
@@ -115,6 +122,8 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
                   primary: Theme.of(context).primaryColor,
                 ),
                 onPressed: () {
+                  Provider.of<DataProvider>(context, listen: false)
+                      .calculateTotalBill();
                   Navigator.of(context).pushNamed(Routes.cartScreen);
                 },
                 child: Text('Go to cart!'),
@@ -131,8 +140,11 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
 
     await controller.scannedDataStream.listen(
       (scanData) {
+        showScanner = false;
+        setState(() {});
         print('Scan Data' + scanData.toString());
         result = scanData.code;
+
         if (result!.isNotEmpty) {
           print('Result  $result');
 
@@ -142,8 +154,6 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
               content: Text('Item added to cart successfully'),
             ),
           );
-          showScanner = false;
-          setState(() {});
         }
       },
     );

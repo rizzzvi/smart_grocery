@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_grocery/constants/data_provider.dart';
 import 'package:smart_grocery/screens/routes.dart';
 
 class CartScreen extends StatelessWidget {
@@ -10,19 +12,41 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Row(
-          children: [Icon(Icons.shopping_cart), Text('My Cart')],
+          children: [
+            Icon(Icons.shopping_cart),
+            Text('My Cart'),
+          ],
         ),
+        actions: [
+          InkWell(
+            onTap: () {
+              Provider.of<DataProvider>(context, listen: false).clearCart();
+              // Navigator.of(context).pushNamed(Routes.cartScreen);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20.0, top: 24.0),
+              child: Text('Clear Cart'),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
           Container(
             alignment: Alignment.bottomCenter,
             height: 40,
-            child: Text('Items(9)'),
+            child: Text(
+              'Items - ' +
+                  Provider.of<DataProvider>(context, listen: false)
+                      .numberOfItems
+                      .toString(),
+            ),
           ),
           Expanded(
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: Provider.of<DataProvider>(context, listen: false)
+                      .cartItems
+                      .length,
                   itemBuilder: (context, index) {
                     return Container(
                       height: 100,
@@ -33,7 +57,9 @@ class CartScreen extends StatelessWidget {
                           Container(
                             height: 80,
                             child: Image.network(
-                                'https://cdn.metro-online.pk/dashboard/prod-pic/LHE-01262/12620038-0-M.jpg?5'),
+                              Provider.of<DataProvider>(context, listen: false)
+                                  .cartItems[index]['image'],
+                            ),
                           ),
                           SizedBox(width: 10),
                           Align(
@@ -41,9 +67,17 @@ class CartScreen extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('A dozen appples'),
+                                Text(
+                                  Provider.of<DataProvider>(context,
+                                          listen: false)
+                                      .cartItems[index]['title'],
+                                ),
                                 SizedBox(height: 6),
-                                Text('10 SR'),
+                                Text(Provider.of<DataProvider>(context,
+                                            listen: false)
+                                        .cartItems[index]['price']
+                                        .toString() +
+                                    ' Sr'),
                               ],
                             ),
                           ),
@@ -58,7 +92,12 @@ class CartScreen extends StatelessWidget {
                 EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
             minVerticalPadding: 0.0,
             title: Text('Total'),
-            trailing: Text('20 SR'),
+            trailing: Text(
+              Provider.of<DataProvider>(context, listen: false)
+                      .totalBill
+                      .toString() +
+                  ' Sr',
+            ),
           ),
           Divider(),
           SizedBox(height: 20),

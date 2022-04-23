@@ -19,7 +19,7 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   String? result = '';
-
+  int counter = 0;
   QRViewController? controller;
   bool showScanner = false;
   int cartItems = 0;
@@ -66,10 +66,30 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             ),
             showScanner
                 ? Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
+                    height: 100,
                     width: 300,
                     child: QRView(
                       key: qrKey,
+                      formatsAllowed: [
+                        BarcodeFormat.aztec,
+                        BarcodeFormat.codabar,
+                        BarcodeFormat.code128,
+                        BarcodeFormat.code39,
+                        BarcodeFormat.code93,
+                        BarcodeFormat.dataMatrix,
+                        BarcodeFormat.ean13,
+                        BarcodeFormat.ean8,
+                        BarcodeFormat.itf,
+                        BarcodeFormat.maxicode,
+                        BarcodeFormat.pdf417,
+                        BarcodeFormat.qrcode,
+                        BarcodeFormat.rss14,
+                        BarcodeFormat.rssExpanded,
+                        BarcodeFormat.unknown,
+                        BarcodeFormat.upcA,
+                        BarcodeFormat.upcE,
+                        BarcodeFormat.upcEanExtension,
+                      ],
                       onQRViewCreated: _onQRViewCreated,
                       overlay: QrScannerOverlayShape(
                         borderColor: Theme.of(context).primaryColor,
@@ -91,30 +111,49 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    primary: Theme.of(context).primaryColor,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  onPressed:
-                      // Provider.of<DataProvider>(context, listen: false)
-                      //     .updateCartItems();
-                      // showScanner = true;
-                      // setState(() {});
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  primary: Theme.of(context).primaryColor,
+                ),
+                onPressed: () async {
+                  String barcodeScanRes =
+                      await FlutterBarcodeScanner.scanBarcode(
+                          '#ff6666', 'Cancel', true, ScanMode.QR);
+                  if (barcodeScanRes.isNotEmpty) {
+                    Provider.of<DataProvider>(context, listen: false)
+                        .updateCartItems(barcodeScanRes);
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-                      showScanner
-                          ? () {
-                              showScanner = false;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Item added to cart successfully'),
+                      ),
+                    );
+                    counter = 0;
+                  }
 
-                              setState(() {});
-                            }
-                          : () {
-                              showScanner = true;
-                              setState(() {});
-                            },
-                  child: Text('SCAN')),
+                  print('DATA GATHERED  ' + barcodeScanRes);
+                },
+                // Provider.of<DataProvider>(context, listen: false)
+                //     .updateCartItems();
+                // showScanner = true;
+                // setState(() {});
+
+                // showScanner
+                //     ? () {
+                //         showScanner = false;
+
+                //         setState(() {});
+                //       }
+                //     : () {
+                //         showScanner = true;
+                //         setState(() {});
+                //       },
+                child: Text('SCAN'),
+              ),
             ),
             SizedBox(height: 50),
             // Text('Scanned Data : ' + result!),
@@ -144,24 +183,31 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
 
   void _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
-
+    print('HERE');
     await controller.scannedDataStream.listen(
       (scanData) {
+        print('Not heree');
         showScanner = false;
         setState(() {});
         print('Scan Data' + scanData.toString());
         result = scanData.code;
+        counter++;
 
-        if (result!.isNotEmpty) {
+        if (result!.isNotEmpty && counter < 2) {
           print('Result  $result');
 
-          Provider.of<DataProvider>(context, listen: false).updateCartItems();
+          Provider.of<DataProvider>(context, listen: false)
+              .updateCartItems(result);
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Item added to cart successfully'),
             ),
           );
+          counter = 0;
         }
+        setState(() {});
       },
     );
     // showScanner = false;

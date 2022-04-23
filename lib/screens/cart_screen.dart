@@ -43,48 +43,35 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: ListView.builder(
-                  itemCount: Provider.of<DataProvider>(context, listen: false)
-                      .cartItems
-                      .length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 100,
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 80,
-                            child: Image.network(
-                              Provider.of<DataProvider>(context, listen: false)
-                                  .cartItems[index]['image'],
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  Provider.of<DataProvider>(context,
-                                          listen: false)
-                                      .cartItems[index]['title'],
-                                ),
-                                SizedBox(height: 6),
-                                Text(Provider.of<DataProvider>(context,
-                                            listen: false)
-                                        .cartItems[index]['price']
-                                        .toString() +
-                                    ' Sr'),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
+            child: ListView.builder(
+              itemCount: Provider.of<DataProvider>(context, listen: false)
+                  .cartItems
+                  .length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          Provider.of<DataProvider>(context, listen: false)
+                              .cartItems[index]['title'],
+                        ),
+                        SizedBox(height: 6),
+                        Text(Provider.of<DataProvider>(context, listen: false)
+                                .cartItems[index]['price']
+                                .toString() +
+                            ' Sr'),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           SizedBox(height: 10),
           Divider(),
           ListTile(
@@ -95,6 +82,7 @@ class CartScreen extends StatelessWidget {
             trailing: Text(
               Provider.of<DataProvider>(context, listen: false)
                       .totalBill
+                      .toStringAsFixed(2)
                       .toString() +
                   ' Sr',
             ),

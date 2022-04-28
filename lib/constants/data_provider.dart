@@ -145,6 +145,196 @@ class DataProvider extends ChangeNotifier {
       'title': 'NESTLE CNTRY CRNFLAKES500',
       'price': 19.75,
     },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Carrot 1kg',
+      'price': 4,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Italian Spinach',
+      'price': 13,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Cucumber',
+      'price': 22,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Rosemary italian',
+      'price': 13,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Ocimum',
+      'price': 2,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Green onion',
+      'price': 2,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Red radish',
+      'price': 2,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Parsely',
+      'price': 3,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Lemon',
+      'price': 9,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Tomato',
+      'price': 18,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Box of banana',
+      'price': 25,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Broccoli',
+      'price': 5,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Blueberry',
+      'price': 15,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Green grape',
+      'price': 20,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'American strawberry',
+      'price': 35,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Red grape one kilo',
+      'price': 23,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Eggplant 1kg',
+      'price': 4,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Potato ',
+      'price': 14,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Yemen mango',
+      'price': 37,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Pomegranate',
+      'price': 5,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Red apple 1kg',
+      'price': 32,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Green apple',
+      'price': 10,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Peach',
+      'price': 25,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Thailand pineapple',
+      'price': 33,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Zucchini',
+      'price': 40,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Melon',
+      'price': 37,
+    },
+    {
+      'id': 2,
+      'image':
+          'https://image.shutterstock.com/image-vector/full-cream-milk-packaging-carton-600w-1577417464.jpg',
+      'title': 'Cauliflower',
+      'price': 7,
+    },
+
     // {
     //   'id': 3,
     //   'image': 'image',
@@ -175,6 +365,33 @@ class DataProvider extends ChangeNotifier {
     if (code == '34.50') cartItems.insert(0, dataList[17]);
     if (code == '22.50') cartItems.insert(0, dataList[18]);
     if (code == '19.75') cartItems.insert(0, dataList[19]);
+    if (code == '100016') cartItems.insert(0, dataList[20]);
+    if (code == '145268') cartItems.insert(0, dataList[21]);
+    if (code == '1000001') cartItems.insert(0, dataList[22]);
+    if (code == '145264') cartItems.insert(0, dataList[23]);
+    if (code == '10058') cartItems.insert(0, dataList[24]);
+    if (code == '10062') cartItems.insert(0, dataList[25]);
+    if (code == '147785') cartItems.insert(0, dataList[26]);
+    if (code == '10057') cartItems.insert(0, dataList[27]);
+    if (code == '10065') cartItems.insert(0, dataList[28]);
+    if (code == '100002') cartItems.insert(0, dataList[29]);
+    if (code == '112348') cartItems.insert(0, dataList[30]);
+    if (code == '10080') cartItems.insert(0, dataList[31]);
+    if (code == '124587') cartItems.insert(0, dataList[32]);
+    if (code == '2010018') cartItems.insert(0, dataList[33]);
+    if (code == '147558') cartItems.insert(0, dataList[34]);
+    if (code == '1090') cartItems.insert(0, dataList[35]);
+    if (code == '100092') cartItems.insert(0, dataList[36]);
+    if (code == '100025') cartItems.insert(0, dataList[37]);
+    if (code == '1000013') cartItems.insert(0, dataList[38]);
+    if (code == '147788') cartItems.insert(0, dataList[39]);
+    if (code == '100054') cartItems.insert(0, dataList[40]);
+    if (code == '100037') cartItems.insert(0, dataList[41]);
+    if (code == '147783') cartItems.insert(0, dataList[42]);
+    if (code == '100410') cartItems.insert(0, dataList[43]);
+    if (code == '1031') cartItems.insert(0, dataList[44]);
+    if (code == '100033') cartItems.insert(0, dataList[45]);
+    if (code == '100018') cartItems.insert(0, dataList[46]);
 
     // if (numberOfItems > 0) {
     //   if (numberOfItems.isEven) {
